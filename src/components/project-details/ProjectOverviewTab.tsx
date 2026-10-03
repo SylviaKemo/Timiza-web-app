@@ -30,7 +30,7 @@ export function ProjectOverviewTab({ project }: { project: Project }) {
           <div className="flex flex-wrap gap-1.5">
             {project.team.map((id) => (
               <span key={id} className="inline-flex h-7 items-center gap-1.5 rounded-full bg-subtle pr-2.5 pl-1 text-[13px] font-normal">
-                <Avatar initials={id} size="xs" className="bg-surface" />
+                <Avatar initials={id} size="xs" tone="surface" />
                 {PEOPLE[id]}
               </span>
             ))}

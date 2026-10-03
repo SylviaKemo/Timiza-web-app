@@ -6,6 +6,7 @@ interface AvatarProps {
   initials: string;
   title?: string;
   size?: 'xs' | 'sm' | 'md' | 'lg';
+  tone?: 'neutral' | 'brand' | 'surface';
   className?: string;
 }
 
@@ -16,13 +17,20 @@ const SIZES = {
   lg: 'size-10 text-sm',
 };
 
-export function Avatar({ initials, title, size = 'sm', className }: AvatarProps) {
+const TONES = {
+  neutral: 'bg-neutral text-muted',
+  brand: 'bg-brand-light text-brand-dark',
+  surface: 'bg-surface text-muted',
+};
+
+export function Avatar({ initials, title, size = 'sm', tone = 'neutral', className }: AvatarProps) {
   return (
     <span
       title={title}
       className={cn(
-        'flex shrink-0 items-center justify-center rounded-full bg-neutral font-semibold text-muted',
+        'flex shrink-0 items-center justify-center rounded-full font-semibold',
         SIZES[size],
+        TONES[tone],
         className,
       )}
     >
