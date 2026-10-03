@@ -1,5 +1,10 @@
 import { create } from 'zustand';
-import { DEFAULT_PROJECT_FILTERS, type ProjectFilters } from '@/lib/derive';
+import {
+  DEFAULT_CLIENT_FILTERS,
+  DEFAULT_PROJECT_FILTERS,
+  type ClientFilters,
+  type ProjectFilters,
+} from '@/lib/derive';
 
 /**
  * Transient UI state (not persisted): the task drawer, modals, toast and highlights.
@@ -32,8 +37,9 @@ interface UiState {
   /** Newly created rows get a short highlight. */
   highlightedProjectId: string | null;
   highlightedClientId: string | null;
-  /** Kept here (not in the page) so creating a project can reset them. */
+  /** List filters are kept here (not in the pages) so creating a record can reset them. */
   projectFilters: ProjectFilters;
+  clientFilters: ClientFilters;
 
   openDrawer: (target: DrawerTarget) => void;
   closeDrawer: () => void;
@@ -50,6 +56,8 @@ interface UiState {
   highlightClient: (clientId: string) => void;
   setProjectFilters: (patch: Partial<ProjectFilters>) => void;
   resetProjectFilters: () => void;
+  setClientFilters: (patch: Partial<ClientFilters>) => void;
+  resetClientFilters: () => void;
   /** Esc closes every overlay. */
   closeAllOverlays: () => void;
 }
@@ -68,6 +76,7 @@ export const useUiStore = create<UiState>()((set) => ({
   highlightedProjectId: null,
   highlightedClientId: null,
   projectFilters: DEFAULT_PROJECT_FILTERS,
+  clientFilters: DEFAULT_CLIENT_FILTERS,
 
   openDrawer: (target) => set({ drawer: target }),
   closeDrawer: () => set({ drawer: null }),
@@ -102,6 +111,8 @@ export const useUiStore = create<UiState>()((set) => ({
 
   setProjectFilters: (patch) => set((s) => ({ projectFilters: { ...s.projectFilters, ...patch } })),
   resetProjectFilters: () => set((s) => ({ projectFilters: { ...DEFAULT_PROJECT_FILTERS, sort: s.projectFilters.sort } })),
+  setClientFilters: (patch) => set((s) => ({ clientFilters: { ...s.clientFilters, ...patch } })),
+  resetClientFilters: () => set((s) => ({ clientFilters: { ...DEFAULT_CLIENT_FILTERS, sort: s.clientFilters.sort } })),
 
   closeAllOverlays: () =>
     set({ drawer: null, projectModal: null, taskModal: null, clientModalOpen: false, mobileNavOpen: false }),
