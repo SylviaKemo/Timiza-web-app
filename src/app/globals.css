@@ -1,0 +1,113 @@
+@import 'tailwindcss';
+
+/*
+ * Design tokens — Timiza
+ * Every colour, radius and shadow used in the UI is defined here so
+ * components can refer to them by name (e.g. `bg-brand`, `rounded-card`).
+ */
+@theme {
+  --font-sans: var(--font-figtree), system-ui, sans-serif;
+
+  /* Breakpoints: below `desktop` the sidebar becomes a drawer, below `wide` tables stack. */
+  --breakpoint-desktop: 56.25rem; /* 900px */
+  --breakpoint-wide: 75rem; /* 1200px */
+
+  /* Brand */
+  --color-brand: #f97316;
+  --color-brand-dark: #c2410c;
+  --color-brand-light: #fff1e8;
+  --color-brand-border: #fbd5ba;
+  --color-undo: #fdba74;
+
+  /* Neutrals */
+  --color-ink: #1c1c1c;
+  --color-canvas: #f8f8f6;
+  --color-surface: #ffffff;
+  --color-muted: #6b6b6b;
+  --color-faint: #9a9a9a;
+  --color-line: #e8e8e5;
+  --color-line-strong: #d5d5d1;
+  --color-divider: #f0f0ed;
+  --color-track: #efefec;
+  --color-row-hover: #fcfcfb;
+  --color-subtle: #f4f4f1;
+  --color-column: #f1f1ee;
+  --color-neutral: #f1f1ef;
+  --color-check-off: #c8c8c4;
+  --color-highlight: #fff8f2;
+
+  /* Semantic */
+  --color-success: #1f7a3d;
+  --color-success-light: #ecf6ef;
+  --color-success-border: #cde7d5;
+  --color-danger: #b42318;
+  --color-danger-light: #fdedec;
+
+  /* Sidebar (ink theme) */
+  --color-sidebar: #1c1c1c;
+  --color-sidebar-line: #2b2b2a;
+  --color-sidebar-muted: #b4b4b0;
+  --color-sidebar-faint: #7a7a77;
+  --color-sidebar-active: #2e2e2c;
+
+  /* Radius */
+  --radius-badge: 6px;
+  --radius-item: 8px;
+  --radius-control: 10px;
+  --radius-tile: 12px;
+  --radius-card: 14px;
+  --radius-modal: 16px;
+
+  /* Shadows (only floating surfaces get one) */
+  --shadow-pop: 0 8px 24px rgba(28, 28, 28, 0.08);
+  --shadow-nav: 0 0 40px rgba(28, 28, 28, 0.12);
+}
+
+@layer base {
+  html,
+  body {
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-faint);
+  }
+}
+
+/* Orange focus ring shared by all text inputs. */
+@utility focus-ring {
+  outline: none;
+  &:focus {
+    border-color: var(--color-brand);
+    box-shadow: 0 0 0 3px var(--color-brand-light);
+  }
+}
+
+/* Subtle overlay used for hover on dark sidebar items. */
+@utility hover-tint {
+  &:hover {
+    box-shadow: inset 0 0 0 999px rgba(128, 128, 128, 0.12);
+  }
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
