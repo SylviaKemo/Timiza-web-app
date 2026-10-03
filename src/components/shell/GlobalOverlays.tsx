@@ -1,5 +1,6 @@
 'use client';
 
+import { ProjectModal } from '@/components/projects/ProjectModal';
 import { TaskDrawer } from '@/components/tasks/TaskDrawer';
 import { TaskModal } from '@/components/tasks/TaskModal';
 import { Toast } from '@/components/ui/Toast';
@@ -13,6 +14,7 @@ export function GlobalOverlays() {
     <>
       <TaskDrawer />
       <TaskModal />
+      <ProjectModal />
       {toast && <Toast key={toast.id} text={toast.text} onUndo={toast.undo} />}
     </>
   );
