@@ -27,3 +27,6 @@ next-env.d.ts
 .vscode/*
 !.vscode/extensions.json
 .idea
+
+# local tooling
+.claude/

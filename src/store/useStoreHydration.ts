@@ -11,9 +11,13 @@ export function useStoreHydration(): boolean {
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = useAppStore.persist.onFinishHydration(() => setHydrated(true));
-    void useAppStore.persist.rehydrate();
-    return unsubscribe;
+    let cancelled = false;
+    Promise.resolve(useAppStore.persist.rehydrate()).then(() => {
+      if (!cancelled) setHydrated(true);
+    });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return hydrated;
