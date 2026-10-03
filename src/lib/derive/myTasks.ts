@@ -66,6 +66,9 @@ export function filterMyTasks(tasks: TaskWithProject[], filters: MyTasksFilters)
   );
 }
 
+export const hasActiveTaskFilters = (f: MyTasksFilters) =>
+  !!f.query.trim() || f.projectId !== 'all' || f.priority !== 'all';
+
 export const countByTab = (tasks: TaskWithProject[], tab: MyTasksTab) => tasks.filter(TAB_FILTERS[tab]).length;
 
 /** Sortable group key: the prefix orders groups, the part after `|` is the label. */
