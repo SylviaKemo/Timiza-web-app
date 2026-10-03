@@ -1,3 +1,6 @@
+> **Note:** This is the original design handoff, with the product renamed from *Scope* to *Timiza*.
+> The HTML prototype files it mentions are design references only and are not part of this repository.
+
 # Handoff: Timiza — Agency Project Management App (MVP)
 
 ## Overview
