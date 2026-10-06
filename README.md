@@ -20,6 +20,10 @@ nothing is entered per screen. There is no backend: data lives in a Zustand stor
 
 Next.js (App Router) · React · TypeScript · Tailwind CSS v4 · Zustand · lucide-react
 
+Deployed on Vercel with [Web Analytics](https://vercel.com/docs/analytics) and
+[Speed Insights](https://vercel.com/docs/speed-insights) (`<Analytics />` and `<SpeedInsights />` in
+`src/app/layout.tsx`). Enable both in the Vercel project dashboard; they collect nothing in local dev.
+
 ## Getting started
 
 ```bash

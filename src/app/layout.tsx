@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Figtree } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { AppShell } from '@/components/shell/AppShell';
 import './globals.css';
 
@@ -20,6 +22,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" className={figtree.variable}>
       <body className="font-sans">
         <AppShell>{children}</AppShell>
+        {/* Vercel Web Analytics and Speed Insights; both are no-ops outside Vercel deployments. */}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
